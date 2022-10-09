@@ -1,0 +1,18 @@
+{
+  v2f: {
+    log_level: 'error',
+    dns: ['1.1.1.1'],
+    inbounds: [
+      { tag: 'ws_vmess', port: 10800, path: '/', net: 'ws', proto: 'vmess' },
+      { tag: 'ws_trojan', port: 10810, path: '/trojan', net: 'ws', proto: 'trojan' },
+      { tag: 'grpc_vmess', port: 10820, path: 'vmess', net: 'grpc', proto: 'vmess' },
+      { tag: 'grpc_trojan', port: 10830, path: 'trojan', net: 'grpc', proto: 'trojan' },
+    ],
+  },
+  traefik: {
+    url: , //provide a domain here
+    port: 443,
+    log_level:"WARNING",
+    email: ,//provide an email here
+  },
+}
