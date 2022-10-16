@@ -1,4 +1,4 @@
 
 data/*
 !data/context.jsonnet.template
-!data/user-uid.jsonnet
+!data/user-uid.jsonnet.template
