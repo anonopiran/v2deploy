@@ -15,4 +15,7 @@
     log_level:"WARNING",
     email: ,//provide an email here
   },
+  ghostunnel: {
+    port: 8443
+  }
 }
