@@ -1,5 +1,6 @@
 local context = import '../data/context.jsonnet';
 {
+  version: "3",
   services: {
     banana_traefik: {
       image: 'traefik:latest',
