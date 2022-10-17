@@ -9,8 +9,7 @@ local context = import '../data/context.jsonnet';
         context.traefik.port + ':' + context.traefik.port,
       ],
       volumes: [
-        './traefik-data/data:/data',
-        './traefik-data/config:/config-dir',
+        './traefik-data:/config-dir',
         './cert:/cert'
       ],
       environment: {

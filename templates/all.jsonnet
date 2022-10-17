@@ -4,5 +4,5 @@ local conf_traefik = import './config-traefik.jsonnet';
 {
     'docker-compose.yaml': std.manifestYamlDoc(docker_compose),
     'v2fly-data/config-v2fly.json': std.toString(conf_v2f),
-    'traefik-data/config/config-traefik.yaml': std.manifestYamlDoc(conf_traefik)
+    'traefik-data/config-traefik.yaml': std.manifestYamlDoc(conf_traefik)
 }
