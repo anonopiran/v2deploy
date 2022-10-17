@@ -9,10 +9,10 @@ local context = import '../data/context.jsonnet';
       [x.tag + '-router']: { rule: 'Host(`' + context.traefik.url + '`) && Path(`' + x.path + '`)', service: x.tag, tls: true }
       for x in context.v2f.inbounds
     },
-    tls: {
+  },
+  tls: {
       certificates:[
         {certFile: '/cert/fullchain.pem',keyFile: '/cert/privatekey.pem'}
       ]
     }
-  },
 }
