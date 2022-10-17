@@ -6,7 +6,7 @@ local context = import '../data/context.jsonnet';
       for x in context.v2f.inbounds
     },
     routers: {
-      [x.tag + '-router']: { rule: 'Host(`' + context.traefik.url + '`) && Path(`' + x.path + '`)', service: x.tag, tls: true }
+      [x.tag + '-router']: { rule: 'Path(`'+ (if x.net == "grpc" then '/' else '') + x.path + (if x.net == "grpc" then '/Tun' else '') +'`)', service: x.tag, tls: true }
       for x in context.v2f.inbounds
     },
   },
