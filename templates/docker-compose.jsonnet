@@ -10,7 +10,8 @@ local context = import '../data/context.jsonnet';
       ],
       volumes: [
         './traefik-data/data:/data',
-        './traefik-data/config-traefik.yaml:/config-dir/config-traefik.yaml',
+        './traefik-data/config:/config-dir',
+        './cert:/cert'
       ],
       environment: {
         TRAEFIK_ENTRYPOINTS_BANABA: 'true',
@@ -19,11 +20,6 @@ local context = import '../data/context.jsonnet';
         TRAEFIK_PROVIDERS_FILE_WATCH: 'false',
         TRAEFIK_LOG: 'true',
         TRAEFIK_LOG_LEVEL: context.traefik.log_level,
-        TRAEFIK_CERTIFICATESRESOLVERS_LE: 'true',
-        TRAEFIK_CERTIFICATESRESOLVERS_LE_ACME_EMAIL: context.traefik.email,
-        TRAEFIK_CERTIFICATESRESOLVERS_LE_ACME_STORAGE: '/data/acme.json',
-        TRAEFIK_CERTIFICATESRESOLVERS_LE_ACME_HTTPCHALLENGE: 'true',
-        TRAEFIK_CERTIFICATESRESOLVERS_LE_ACME_HTTPCHALLENGE_ENTRYPOINT: 'BANABA',
       },
       restart: 'unless-stopped',
     },
@@ -44,8 +40,7 @@ local context = import '../data/context.jsonnet';
         context.ghostunnel.port+':'+context.ghostunnel.port,
       ],
       volumes: [
-        './ghostunnel-data/fullchain.pem:/cert/fullchain.pem',
-        './ghostunnel-data/privatekey.pem:/cert/privatekey.pem'
+        './cert:/cert',
       ],
       command: [
         'server',

@@ -6,8 +6,13 @@ local context = import '../data/context.jsonnet';
       for x in context.v2f.inbounds
     },
     routers: {
-      [x.tag + '-router']: { rule: 'Host(`' + context.traefik.url + '`) && Path(`' + x.path + '`)', service: x.tag, tls: { certresolver: 'le' } }
+      [x.tag + '-router']: { rule: 'Host(`' + context.traefik.url + '`) && Path(`' + x.path + '`)', service: x.tag, tls: true }
       for x in context.v2f.inbounds
     },
+    tls: {
+      certificates:[
+        {certFile: '/cert/fullchain.pem',keyFile: '/cert/privatekey.pem'}
+      ]
+    }
   },
 }
