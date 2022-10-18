@@ -10,10 +10,8 @@
     ],
   },
   traefik: {
-    url: , //provide a domain here
     port: 443,
     log_level:"WARNING",
-    email: ,//provide an email here
   },
   ghostunnel: {
     port: 8443
